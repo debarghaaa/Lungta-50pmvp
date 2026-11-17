@@ -1,0 +1,10 @@
+{
+  "name": "Remix Lungta Daily Rhythm-50pmvp",
+  "description": "A gentle, elder-friendly wellness companion featuring calm breathing, walking, hydration, and hobby tracking in a serene Himalayan-inspired interface.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

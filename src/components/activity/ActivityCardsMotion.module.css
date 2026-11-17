@@ -1,0 +1,135 @@
+/* Isolated CSS Module exclusively for Lungta Activity Cards motion */
+
+.motionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .motionSection {
+    gap: 2.5rem;
+  }
+}
+
+.primarySlot {
+  position: relative;
+  transform-origin: center center;
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.primarySlotEnter {
+  animation: activityPrimaryEnter 520ms cubic-bezier(0.22, 1, 0.36, 1) 20ms backwards;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primarySlot:hover {
+    transform: translate3d(0, -3px, 0) scale(1.004);
+  }
+}
+
+.primarySlot:focus-within {
+  transform: translate3d(0, -2px, 0) scale(1.003);
+}
+
+.companionGridTrack {
+  position: relative;
+  overflow-x: clip;
+  overflow-y: visible;
+  /* Allow subtle vertical hover elevation without clipping shadows */
+  padding-top: 6px;
+  margin-top: -6px;
+  padding-bottom: 10px;
+  margin-bottom: -10px;
+}
+
+.companionSlot {
+  position: relative;
+  display: flex;
+  transform-origin: center center;
+  transition:
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.companionSlotSettled {
+  will-change: auto;
+}
+
+.companionEnter0 {
+  animation: activityCompanionEnter 560ms cubic-bezier(0.22, 1, 0.36, 1) 90ms backwards;
+}
+
+.companionEnter1 {
+  animation: activityCompanionEnter 560ms cubic-bezier(0.22, 1, 0.36, 1) 175ms backwards;
+}
+
+.companionEnter2 {
+  animation: activityCompanionEnter 560ms cubic-bezier(0.22, 1, 0.36, 1) 260ms backwards;
+}
+
+/* Carousel-inspired depth hierarchy on active/focused card vs neighboring cards */
+.companionActive {
+  z-index: 2;
+  opacity: 1;
+  transform: translate3d(0, -5px, 0) scale(1.012);
+}
+
+.companionReceded {
+  z-index: 1;
+  opacity: 0.93;
+  transform: translate3d(0, 2px, 0) scale(0.992);
+}
+
+/* Never trap fixed modals inside a transformed ancestor */
+.companionSlot:has([role='dialog']),
+.companionSlot:has([role='dialog']):hover,
+.primarySlot:has([role='dialog']),
+.primarySlot:has([role='dialog']):hover {
+  transform: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+  z-index: 30;
+}
+
+@keyframes activityPrimaryEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.988);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes activityCompanionEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(18px, 10px, 0) scale(0.974);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primarySlot,
+  .primarySlotEnter,
+  .primarySlot:hover,
+  .primarySlot:focus-within,
+  .companionSlot,
+  .companionEnter0,
+  .companionEnter1,
+  .companionEnter2,
+  .companionActive,
+  .companionReceded {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    will-change: auto !important;
+  }
+}

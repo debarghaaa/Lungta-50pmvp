@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --graphite: #353535;
+  --stormy-teal: #3C6E71;
+  --white: #FFFFFF;
+  --alabaster-grey: #D9D9D9;
+  --yale-blue: #284B63;
+  --color-secondary-text: #4F5D63;
+}
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #FFFFFF;
+    color: #353535;
+    overflow-x: hidden;
+  }
+}
+
+.font-display {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.font-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-editorial {
+  font-family: 'Cinzel', serif;
+}
+
+.font-book {
+  font-family: 'Lora', 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Subtle archival page styling harmonized with Alabaster Grey & Stormy Teal */
+.bg-parchment-page {
+  background-color: #FFFFFF;
+  background-image: radial-gradient(#D9D9D9 1px, transparent 1px), radial-gradient(#3C6E71 0.55px, transparent 0.55px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.shadow-book-page {
+  box-shadow: 
+    0 1px 1px rgba(40,75,99,0.05),
+    0 2px 4px rgba(40,75,99,0.05),
+    0 4px 12px rgba(40,75,99,0.08),
+    0 12px 32px rgba(53,53,53,0.10),
+    inset 0 0 36px rgba(217, 217, 217, 0.22);
+}
+
+/* Subtle paper & island surfaces */
+.bg-cream-paper {
+  background-color: #FFFFFF;
+}
+
+.bg-sage-island {
+  background-color: #EDF2F2;
+}
+
+.bg-blue-island {
+  background-color: #EBF0F3;
+}
+
+.bg-warm-island {
+  background-color: #F2F2F2;
+}
+
+.bg-card-island {
+  background-color: #FFFFFF;
+}
+
+/* Prayer flag wave animation */
+@keyframes flagFlutter {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(1.2deg) translateY(-2px);
+  }
+}
+
+.animate-flutter {
+  animation: flagFlutter 4s ease-in-out infinite;
+}
+
+/* Elderly-friendly high-contrast outline */
+*:focus-visible {
+  outline: 3px solid var(--stormy-teal);
+  outline-offset: 3px;
+}
+
